@@ -25,9 +25,21 @@
 #  + Script can be run from command line or in Blender Editor (Text Editor>Run Script)
 #  + Command line: Install mathutils module in your bpy virtualenv with 'pip install mathutils==2.81.2'
 
+import bpy, _cycles
+bpy.context.scene.cycles.device = 'GPU'
+avail_devices = _cycles.available_devices('CUDA')
+print(avail_devices)
+prop = bpy.context.preferences.addons['cycles'].preferences
+prop.get_devices(prop.compute_device_type)
+prop.compute_device_type = 'CUDA'
+for device in prop.devices:
+    if device.type == 'CUDA':
+        print('device: ', device)
+        device.use = True
+        
 import os
 import sys
-import bpy
+#import bpy
 import time
 import joblib
 import argparse
@@ -137,11 +149,14 @@ def process_pose(current_frame, pose, trans, pelvis_position):
 
         bone_rotation = Matrix(mat_rot).to_quaternion()
         quat_x_90_cw = Quaternion((1.0, 0.0, 0.0), radians(-90))
+        quat_y_90_cw = Quaternion((0.0, 1.0, 0.0), radians(-90))
         quat_z_90_cw = Quaternion((0.0, 0.0, 1.0), radians(-90))
-
+        
+        quat_x_180_cw = Quaternion((1.0, 0.0, 0.0), radians(-180))
+        
         if index == 0:
             # Rotate pelvis so that avatar stands upright and looks along negative Y avis
-            bone.rotation_quaternion = (quat_x_90_cw @ quat_z_90_cw) @ bone_rotation
+            bone.rotation_quaternion = (quat_y_90_cw @ quat_x_180_cw) @ bone_rotation
         else:
             bone.rotation_quaternion = bone_rotation
 
