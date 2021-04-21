@@ -58,6 +58,7 @@ fps_target = 30
 gender = 'male'
 
 start_origin = 1
+person_id = 1
 
 bone_name_from_index = {
     0 : 'Pelvis',
@@ -267,37 +268,37 @@ if __name__ == '__main__':
     try:
         if bpy.app.background:
 
-            parser = argparse.ArgumentParser(description='Create keyframed animated skinned SMPL mesh from VIBE output')
-            parser.add_argument('--input', dest='input_path', type=str, required=True,
-                                help='Input file or directory')
-            parser.add_argument('--output', dest='output_path', type=str, required=True,
-                                help='Output file or directory')
-            parser.add_argument('--fps_source', type=int, default=fps_source,
-                                help='Source framerate')
-            parser.add_argument('--fps_target', type=int, default=fps_target,
-                                help='Target framerate')
-            parser.add_argument('--gender', type=str, default=gender,
-                                help='Always use specified gender')
-            parser.add_argument('--start_origin', type=int, default=start_origin,
-                                help='Start animation centered above origin')
-            parser.add_argument('--person_id', type=int, default=1,
-                                help='Detected person ID to use for fbx animation')
+#             parser = argparse.ArgumentParser(description='Create keyframed animated skinned SMPL mesh from VIBE output')
+#             parser.add_argument('--input', dest='input_path', type=str, required=True,
+#                                 help='Input file or directory')
+#             parser.add_argument('--output', dest='output_path', type=str, required=True,
+#                                 help='Output file or directory')
+#             parser.add_argument('--fps_source', type=int, default=fps_source,
+#                                 help='Source framerate')
+#             parser.add_argument('--fps_target', type=int, default=fps_target,
+#                                 help='Target framerate')
+#             parser.add_argument('--gender', type=str, default=gender,
+#                                 help='Always use specified gender')
+#             parser.add_argument('--start_origin', type=int, default=start_origin,
+#                                 help='Start animation centered above origin')
+#             parser.add_argument('--person_id', type=int, default=1,
+#                                 help='Detected person ID to use for fbx animation')
 
-            args = parser.parse_args()
+#             args = parser.parse_args()
 
-            input_path = args.input_path
-            output_path = args.output_path
+#             input_path = args.input_path
+#             output_path = args.output_path
 
-            if not os.path.exists(input_path):
-                print('ERROR: Invalid input path')
-                sys.exit(1)
+#             if not os.path.exists(input_path):
+#                 print('ERROR: Invalid input path')
+#                 sys.exit(1)
 
-            fps_source = args.fps_source
-            fps_target = args.fps_target
+#             fps_source = args.fps_source
+#             fps_target = args.fps_target
 
-            gender = args.gender
+#             gender = args.gender
 
-            start_origin = args.start_origin
+#             start_origin = args.start_origin
 
         # end if bpy.app.background
 
@@ -305,7 +306,10 @@ if __name__ == '__main__':
 
         # Process data
         cwd = os.getcwd()
-
+        
+        input_path = output/sample_video/vibe_output.pkl
+        output_path = output/sample_video/fbx_output.fbx
+        
         # Turn relative input/output paths into absolute paths
         if not input_path.startswith(os.path.sep):
             input_path = os.path.join(cwd, input_path)
