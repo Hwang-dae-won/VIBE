@@ -5,6 +5,9 @@ cd data
 gdown "https://drive.google.com/uc?id=1untXhYOLQtpNEy4GTY_0fL_H-k6cTf_r"
 unzip vibe_data.zip
 rm vibe_data.zip
+gdown --id "1xxL-L0cL85jUz8MxfSEyQ5ai39E63X4r"
+gdown --id "1hC_hgJCPtFQ72Pv5cnjr0BaieNAbb7zn"
+
 cd ..
 mv data/vibe_data/sample_video.mp4 .
 mkdir -p $HOME/.torch/models/
