@@ -303,7 +303,7 @@ if __name__ == '__main__':
                 fps_source=fps_source,
                 fps_target=fps_target,
                 start_origin=start_origin,
-                person_id=args.person_id
+                person_id=person_id
             )
             export_animated_mesh(output_path)
 
