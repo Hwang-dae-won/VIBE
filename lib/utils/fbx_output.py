@@ -49,8 +49,8 @@ from math import radians
 from mathutils import Matrix, Vector, Quaternion, Euler
 
 # Globals
-male_model_path = 'data/SMPL_unity_v.1.0.0/smpl/Models/SMPL_m_unityDoubleBlends_lbs_10_scale5_207_v1.0.0.fbx'
-female_model_path = 'data/SMPL_unity_v.1.0.0/smpl/Models/SMPL_f_unityDoubleBlends_lbs_10_scale5_207_v1.0.0.fbx'
+male_model_path = 'data/SMPL_m_unityDoubleBlends_lbs_10_scale5_207_v1.0.0.fbx'
+female_model_path = 'data/SMPL_f_unityDoubleBlends_lbs_10_scale5_207_v1.0.0.fbx'
 
 fps_source = 30
 fps_target = 30
