@@ -274,8 +274,8 @@ if __name__ == '__main__':
         # Process data
         cwd = os.getcwd()
         
-        input_path = output/sample_video/vibe_output.pkl
-        output_path = output/sample_video/fbx_output.fbx
+        input_path = "output/sample_video/vibe_output.pkl"
+        output_path = "output/sample_video/fbx_output.fbx"
         
         # Turn relative input/output paths into absolute paths
         if not input_path.startswith(os.path.sep):
